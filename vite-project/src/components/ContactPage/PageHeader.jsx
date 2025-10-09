@@ -21,7 +21,7 @@ function PageHeader() {
     const bodyClass = isDarkMode ? PALETTE.textSecondary : "text-gray-500";
     const gradientClass = isDarkMode 
         ? `bg-gradient-to-r ${PALETTE.accentGradient} text-transparent bg-clip-text` 
-        : 'bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 text-transparent bg-clip-text';
+        : 'bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text';
     
     return (
         <header className="mb-16 text-center pt-8">

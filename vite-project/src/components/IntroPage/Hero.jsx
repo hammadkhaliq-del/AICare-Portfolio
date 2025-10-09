@@ -53,7 +53,7 @@ const Hero = () => {
     const purpleBlobColor = isDarkMode ? 'bg-purple-900/40' : 'bg-purple-100/50';
 
     // The gradient for the cycling word: from violet-500 to violet-800
-    const animatedWordGradient = "block text-transparent bg-gradient-to-r from-[#8b5cf6] via-[#7c3aed] to-[#5b21b6] bg-clip-text";
+    const animatedWordGradient = "block text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-purple-600 bg-clip-text";
 
     // --- FORCED LIGHT MODE STYLES FOR THE DASHBOARD MOCKUP ---
     const dashboardInnerBg = 'bg-white'; // Always white

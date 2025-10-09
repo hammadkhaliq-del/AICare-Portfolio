@@ -29,7 +29,7 @@ export default function AboutHero() {
     // The accent text class uses the solid violet color
     const accentTextColor = isDarkMode 
         ? PALETTE.accentText 
-        : 'text-indigo-600'; // Using a darker indigo for light mode if gradient is removed
+        : 'bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text'; // Using a darker indigo for light mode if gradient is removed
 
     return (
         <section className={`py-20 px-4 transition-colors duration-300 ${sectionBgClass}`}>

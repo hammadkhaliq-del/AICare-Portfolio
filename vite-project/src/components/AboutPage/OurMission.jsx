@@ -1,7 +1,7 @@
 import React from 'react';
 import { Check } from "lucide-react";
 import { useTheme } from '../../context/ThemeContext'; // Import useTheme
-import aboutImage from "../../../public/abouthero.jpg";
+import aboutImage from "../../assets/abouthero.jpg";
 
 export default function OurMission({ isVisible }) {
     const { theme } = useTheme();
