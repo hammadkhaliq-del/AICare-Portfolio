@@ -26,7 +26,7 @@ const SolutionCard = ({
     description, 
     features, 
     tag,
-    linkUrl = "#" 
+    linkUrl = "/products" // UPDATED: Default link to /products
 }) => {
     // 1. Get Theme
     const { theme } = useTheme();
@@ -36,7 +36,8 @@ const SolutionCard = ({
 
     // Dynamic Classes (Updated for Violet Theme)
     const cardBgClass = isDarkMode ? PALETTE.surface : 'bg-white'; 
-    const cardBorderClass = isDarkMode ? PALETTE.accent : 'border-gray-200/60'; // Use violet accent for border on hover
+    // UPDATED: Removed accent from default border class
+    const cardBorderClass = isDarkMode ? 'border-transparent' : 'border-gray-200/60'; 
     const headingTextColor = isDarkMode ? PALETTE.textPrimary : 'text-gray-900';
     const bodyTextColor = isDarkMode ? PALETTE.textSecondary : 'text-gray-600';
     
@@ -45,18 +46,17 @@ const SolutionCard = ({
 
     // Tag styles
     const tagClasses = {
-        // Updated colors to match theme
         'Popular': isDarkMode ? 'bg-orange-800/50 text-orange-300' : 'bg-orange-100 text-orange-800',
         'New': isDarkMode ? 'bg-green-800/50 text-green-300' : 'bg-green-100 text-green-800',
     };
     const currentTagClass = tag ? tagClasses[tag] || tagClasses['Popular'] : '';
 
-    // CTA Button - Solid dark background or light gray background, with VIOLENT accent on hover
+    // CTA Button
     const buttonClasses = isDarkMode 
-        ? `${PALETTE.subtleSurface} text-white ${PALETTE.accentHover} hover:border-[${PALETTE.accentBg.replace('bg', 'text')}]` // Use subtle surface for button
+        ? `${PALETTE.subtleSurface} text-white ${PALETTE.accentHover}` 
         : 'bg-gray-100 text-gray-900 hover:bg-gray-200 hover:text-blue-600';
     
-    // Violet checkmark for dark mode, orange for light mode (kept original light mode contrast)
+    // Violet checkmark for dark mode
     const checkmarkColor = isDarkMode ? PALETTE.accent : 'text-orange-500'; 
 
 
@@ -64,9 +64,10 @@ const SolutionCard = ({
         <div 
             className={`
                 rounded-xl transition-all duration-300 h-full
-                border ${isDarkMode ? 'border-transparent' : cardBorderClass} ${cardBgClass}
+                border ${cardBorderClass} ${cardBgClass}
                 ${isHovered 
-                    ? `shadow-xl transform -translate-y-1 ${isDarkMode ? `shadow-[0_0_15px_0_rgba(139,92,246,0.3)] border-[${PALETTE.accent.replace('text', '')}]` : 'shadow-blue-200'}` 
+                    // UPDATED: Simplified hover to just lift and default shadow
+                    ? `shadow-xl transform -translate-y-1` 
                     : 'shadow-md'}
             `}
             onMouseEnter={() => setIsHovered(true)}
@@ -114,7 +115,7 @@ const SolutionCard = ({
                 
                 {/* Call to Action Button */}
                 <a 
-                    href={linkUrl} 
+                    href={linkUrl} // Uses the updated linkUrl
                     className={`mt-auto inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium
                         transition-all duration-200 text-sm sm:text-base ${buttonClasses}`}
                 >
@@ -143,14 +144,13 @@ export default function Solutions() {
         ? PALETTE.background
         : 'bg-[#F8FAF4]';
         
-    // Use the accent color for tag text, and a dark surface for the tag background
     const tagBgClass = isDarkMode 
         ? `${PALETTE.surface} ${PALETTE.accent}` 
-        : 'bg-blue-100 text-blue-700'; // Kept original light mode blue
+        : 'bg-blue-100 text-blue-700';
         
     const headingTextColor = isDarkMode ? PALETTE.textPrimary : 'text-gray-900';
     const bodyTextColor = isDarkMode ? PALETTE.textSecondary : 'text-gray-600';
-    const highlightColor = isDarkMode ? PALETTE.accent : 'text-blue-600'; // Accent color for highlights
+    const highlightColor = isDarkMode ? PALETTE.accent : 'text-blue-600';
 
 
     const solutions = [
@@ -220,7 +220,7 @@ export default function Solutions() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {solutions.map((solution, index) => (
-                        <SolutionCard key={index} {...solution} />
+                        <SolutionCard key={index} {...solution} /> 
                     ))}
                 </div>
             </div>
