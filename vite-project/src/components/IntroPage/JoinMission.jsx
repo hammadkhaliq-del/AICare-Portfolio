@@ -28,7 +28,7 @@ export default function JoinMission() {
 
     return (
         // Outer background only appears dark in dark mode
-        <div className={`${outerBgClass} px-48 py-20`}>
+        <div className={`${outerBgClass} py-20`}>
           <div className={`${outerBgClass} px-8 transition-colors duration-300`}>
               <section className={`py-16 ${sectionBgClass} transition-colors duration-300 rounded-xl`}>
                   <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
